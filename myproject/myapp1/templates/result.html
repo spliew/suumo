@@ -1,0 +1,39 @@
+{% extends "top.html" %}
+{% block content %}
+<header>
+  <div class="header-title"><a href="{% url "top" %}">Peichan</a></div>
+  <div class="header-again">
+    <form action="result" method="POST">
+      {% csrf_token %}
+      <input id="id_url" class="header-input" maxlength="200" name="url" type="text" required="" placeholder="enter URL here">
+      <input class="header-go"type="submit" value="Go!"/>
+    </form>
+  </div>
+</header>
+<div class="result-wrap">
+  <div class="result-right">
+    {% for key, value in predictions.items %}
+      <div class="category">
+        <div class="category__head">
+          <div class="category__head-name">{{key}}</div>
+          <div class="category__head-value">{{value}}%</div>
+        </div>
+        <div class="category__body">
+          <div class="category__body-value" style="width:{{value}}%;"></div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="result-left">
+    元URL: <a href="{{url}}">{{url}}</a>
+    <h1>{{h1}}</h1>
+    <article>
+      {% for p in ps %}
+      <p>{{p}}</p>
+      {% endfor %}
+    </article>
+  </div>
+    
+</div>
+{% endblock %}

@@ -1,0 +1,176 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Peipei</title>
+    <!-- <link rel="stylesheet" href="{% static 'css/mystyle.css' %}"> -->
+<style type="text/css">
+html, body {
+  width: 100%; height: 100%;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+
+.home-wrap {
+  width: 80%;
+  max-width: 400px;
+  margin: auto;
+}
+
+.home-title {
+  text-align: center;
+  padding-top: 100px;
+  font-size: 40px;
+}
+
+.home-describe {
+  text-align: center;
+  padding-top: 40px;
+  font-size: 20px;
+}
+
+.home-input {
+  margin-top: 60px;
+  width: 100%;
+  font-size: 15px;
+/*  text-align: center;
+*/  padding: 5px 10px;
+}
+.home-go {
+  display: block;
+  width: 80px;
+  margin: auto;
+  margin-top: 30px;
+  font-size: 16px;
+  text-align: center;
+  padding: 4px 10px;
+  border: 1px solid black;
+  background: #eee;
+  cursor: pointer;
+}
+
+header {
+  height: 40px;
+  width: 100%;
+  overflow: hidden;
+}
+.header-title {
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 6px 14px;
+}
+
+.header-again{
+  float: right;
+  height: 24px;
+  padding: 8px;
+}
+
+.header-input {
+  height: 20px;
+  width: 400px;
+  padding-left: 4px;
+}
+.header-go {
+  height: 24px;
+  font-size: 16px;
+  padding: 2px 4px;
+  background: #eee;
+  margin-left: 0;
+}
+
+.result-wrap {
+  overflow: hidden;
+  width: 100%;
+  background: #eee;
+}
+
+.result-right {
+  float: right;
+  width: 40%;
+  margin: 10px 3.3% 20px 0;
+  padding: 10px 2.5% 20px;
+  background: white;
+}
+
+.result-left {
+  float: left;
+  width: 40%;
+  margin: 10px 3.3% 30px;
+  padding: 10px 2.5%;
+  background: white;
+}
+
+.category {
+  width: 90%;
+  margin: 10px 10px;
+}
+
+.category__head {
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+.category__head-name {
+  float: left;
+}
+
+.category__head-value {
+  float: right;
+}
+
+.category__body {
+  height: 4px;
+  width: 100%;
+  background: #eee;
+}
+.category__body-value {
+  float: right;
+  height: 100%;
+  width: 40%;
+  background: blue;
+}
+
+@media screen and (max-width: 700px) {
+ 
+.result-right {
+  float: none;
+  width: 85%;
+  margin: 10px 2.5% 20px;
+  padding: 10px 5% 20px;
+}
+
+.result-left {
+  float: none;
+  width: 90%;
+  margin: 10px 2.5% 30px;
+  padding: 10px 2.5%;
+}
+}
+
+    </style>
+  </head>
+
+  <body>
+    {% block content %}
+    <div class="home-wrap">
+      <h1 class="home-title">House Price Predictor</h1>
+      <h1 class="home-describe">* Only valid for Suumo (1K,1DK,1LDK and one-room) houses in Kawasaki-shi, Ohta Ward and Shinagawa Ward.</h1>
+      <h1 class="home-describe">* Find house in Suumo and copy & paste the URL link into the box below, then GO! example URL: <a href="https://suumo.jp/chintai/jnc_000040480178/?bc=100122008722">https://suumo.jp/chintai/jnc_000040480178/?bc=100122008722</a></h1>
+      <form action="result" method="POST">
+        {% csrf_token %}
+        <input id="id_url" class="home-input" maxlength="200" name="url" type="text" required="" placeholder="enter URL here, e.g. https://suumo.jp/chintai...">
+        <input class="home-go"type="submit" value="Go!"/>
+      </form>
+    </div>
+    {% endblock %}
+  </body>
+
+</html>
