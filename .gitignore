@@ -1,2 +1,6 @@
-__pycache__
 .ipynb_checkpoints
+encoder.p
+model.p
+encoder2.p
+model2.p
+__pycache__
