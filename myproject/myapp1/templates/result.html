@@ -12,7 +12,7 @@
 </header>
 <div class="result-wrap">
   <div class="result-right">
-    {% for key, value in predictions.items %}
+    <!-- {% for key, value in predictions.items %}
       <div class="category">
         <div class="category__head">
           <div class="category__head-name">{{key}}</div>
@@ -22,12 +22,16 @@
           <div class="category__body-value" style="width:{{value}}%;"></div>
         </div>
       </div>
-    {% endfor %}
+    {% endfor %} -->
+    
+  <h1>My predicted Rental Rate is: {{predictions}} yen</h1>
   </div>
 
   <div class="result-left">
-    元URL: <a href="{{url}}">{{url}}</a>
+    Original URL: <a href="{{url}}">{{url}}</a>
     <h1>{{h1}}</h1>
+    <h1>Suumo Rental Rate: {{h9}} yen</h1>
+      <h1>My predicted Rental Rate is: {{predictions}} yen</h1>
     <article>
       {% for p in ps %}
       <p>{{p}}</p>
