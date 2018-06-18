@@ -101,6 +101,11 @@ def process(url):
             kanri = re.findall('"([^"]*)"', i)[0]
 
     h9 = int(chin) + int(kanri)
+    dk = 0
+    k = 0
+    l = 0
+    s = 0
+    
 
     if 'DK' in madori:
         dk =1
@@ -129,7 +134,7 @@ def process(url):
     with open('encoder3.p','rb') as hand:
         lbl = pickle.load(hand)
 
-    with open('model3.p','wb') as hand:
+    with open('model3.p','rb') as hand:
         lgb_clf = pickle.load(hand)
 
     for col in categorial_features:
